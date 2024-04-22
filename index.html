@@ -43,14 +43,14 @@
             <div class="flex items-center">
               <button
                 class="bg-blue-500 text-white px-2 py-1 rounded-l"
-                onclick="decrement()"
+                onclick="decrement1()"
               >
                 -
               </button>
-              <span class="px-2" id="product-count">0</span>
+              <span class="px-2" id="product-count-1">0</span>
               <button
                 class="bg-blue-500 text-white px-2 py-1 rounded-r"
-                onclick="increment()"
+                onclick="increment1()"
               >
                 +
               </button>
@@ -71,14 +71,14 @@
             <div class="flex items-center">
               <button
                 class="bg-blue-500 text-white px-2 py-1 rounded-l"
-                onclick="decrement()"
+                onclick="decrement2()"
               >
                 -
               </button>
-              <span class="px-2" id="product-count">0</span>
+              <span class="px-2" id="product-count-2">0</span>
               <button
                 class="bg-blue-500 text-white px-2 py-1 rounded-r"
-                onclick="increment()"
+                onclick="increment2()"
               >
                 +
               </button>
@@ -102,14 +102,14 @@
             <div class="flex items-center">
               <button
                 class="bg-blue-500 text-white px-2 py-1 rounded-l"
-                onclick="decrement()"
+                onclick="decrement3()"
               >
                 -
               </button>
-              <span class="px-2" id="product-count">0</span>
+              <span class="px-2" id="product-count-3">0</span>
               <button
                 class="bg-blue-500 text-white px-2 py-1 rounded-r"
-                onclick="increment()"
+                onclick="increment3()"
               >
                 +
               </button>
@@ -130,14 +130,14 @@
             <div class="flex items-center">
               <button
                 class="bg-blue-500 text-white px-2 py-1 rounded-l"
-                onclick="decrement()"
+                onclick="decrement4()"
               >
                 -
               </button>
-              <span class="px-2" id="product-count">0</span>
+              <span class="px-2" id="product-count-4">0</span>
               <button
                 class="bg-blue-500 text-white px-2 py-1 rounded-r"
-                onclick="increment()"
+                onclick="increment4()"
               >
                 +
               </button>
@@ -157,14 +157,14 @@
             <div class="flex items-center">
               <button
                 class="bg-blue-500 text-white px-2 py-1 rounded-l"
-                onclick="decrement()"
+                onclick="decrement5()"
               >
                 -
               </button>
-              <span class="px-2" id="product-count">0</span>
+              <span class="px-2" id="product-count-5">0</span>
               <button
                 class="bg-blue-500 text-white px-2 py-1 rounded-r"
-                onclick="increment()"
+                onclick="increment5()"
               >
                 +
               </button>
@@ -181,33 +181,34 @@
         <!-- Title: Item, Quantity, and Price -->
         <div class="flex justify-between items-center mb-2">
           <h2 class="text-lg font-semibold">Item</h2>
+          <div class="item"></div>
           <h2 class="text-lg font-semibold">Quantity</h2>
+          <div class="quantity"></div>
           <h2 class="text-lg font-semibold">Price</h2>
+          <div class="price"></div>
         </div>
         <!-- Line -->
         <div class="border-b border-white mb-4"></div>
 
         <!-- Items -->
-        <!-- dynamically add items here using JavaScript -->
-
-        <!-- Quantity Count -->
-        <!-- dynamically update the quantity count here using JavaScript -->
-
-        <!-- Price Calculation -->
-        <!-- dynamically calculate and update the total price here using JavaScript -->
+        <div class="cart-items">
+          <!-- Cart items will be dynamically added here -->
+        </div>
 
         <!-- Total -->
         <div class="mb-4">
           <h2 class="text-lg font-semibold mb-2">Total</h2>
-          <p class="mb-2">$0.00</p>
+          <p id="total-price" class="mb-2">$0.00</p>
         </div>
 
         <!-- Proceed Button -->
         <button
           class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          onclick="validateSelection()"
         >
           Proceed
         </button>
+        <p id="error-message" class="my-4"></p>
       </div>
     </div>
     <!-- Pagination -->
