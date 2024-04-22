@@ -114,11 +114,6 @@ function addToCart(productName, price, count) {
     "$" + totalPrice.toFixed(2);
 }
 
-// Function to calculate the total number of products
-function calculateTotalProducts() {
-  return count1 + count2 + count3 + count4 + count5;
-}
-
 function validateSelection() {
   if (
     count1 === 0 &&
