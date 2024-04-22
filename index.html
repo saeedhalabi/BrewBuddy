@@ -5,9 +5,140 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Resturant Menu App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Restaurant Menu App</title>
   </head>
-  <body>
-    <h1>Menu</h1>
+  <body class="bg-gray-900">
+    <h1 class="text-center text-white text-2xl mt-5 hidden sm:block">
+      Menu Coffee Shop App
+    </h1>
+
+    <!-- Menu -->
+    <div
+      class="container mx-auto max-w-md text-center text-white p-4 flex flex-col gap-4 mr-10 sm:ml-10 lg:ml-0 lg:w-1/4"
+    >
+      <h1 class="text-white p-5 mx-5 mt-2 sm:text-center">Menu</h1>
+
+      <!-- Product 1 & 2 -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- Product 1 -->
+        <div
+          class="bg-slate-700 text-white p-2 rounded-md flex flex-col items-center"
+        >
+          <img
+            src="images/Coffee_Lattee-removebg-preview.png"
+            alt="Coffee Latte"
+            class="w-full h-24 object-cover rounded-md mb-2"
+          />
+          <h2 class="text-lg font-semibold mb-1">Coffee Latte</h2>
+          <p class="mb-1">$4.99</p>
+          <div class="flex items-center">
+            <button class="bg-blue-500 text-white px-2 py-1 rounded-l">
+              -
+            </button>
+            <span class="px-2">1</span>
+            <button class="bg-blue-500 text-white px-2 py-1 rounded-r">
+              +
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div
+          class="bg-slate-700 text-white p-2 rounded-md flex flex-col items-center"
+        >
+          <img
+            src="images/capuccino.png"
+            alt="Capuccino"
+            class="w-full h-26 object-cover rounded-md mb-2"
+          />
+          <h2 class="text-lg font-semibold mb-1">Capuccino</h2>
+          <p class="mb-1">$3.49</p>
+          <div class="flex items-center">
+            <button class="bg-blue-500 text-white px-2 py-1 rounded-l">
+              -
+            </button>
+            <span class="px-2">1</span>
+            <button class="bg-blue-500 text-white px-2 py-1 rounded-r">
+              +
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 & 4 -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- Product 3 -->
+        <div
+          class="bg-slate-700 text-white p-2 rounded-md flex flex-col items-center"
+        >
+          <img
+            src="images/americano coffee.png"
+            alt="Americano"
+            class="w-full h-26 object-cover rounded-md mb-2"
+          />
+          <h2 class="text-lg font-semibold mb-1">Americano</h2>
+          <p class="mb-1">$2.20</p>
+          <div class="flex items-center">
+            <button class="bg-blue-500 text-white px-2 py-1 rounded-l">
+              -
+            </button>
+            <span class="px-2">1</span>
+            <button class="bg-blue-500 text-white px-2 py-1 rounded-r">
+              +
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div
+          class="bg-slate-700 text-white p-2 rounded-md flex flex-col items-center"
+        >
+          <img
+            src="images/Iced Caramel Latte.png"
+            alt="Iced Caramel Latte"
+            class="w-full h-24 object-cover rounded-md mb-2"
+          />
+          <h2 class="text-lg font-semibold mb-1">Iced Caramel Latte</h2>
+          <p class="mb-1">$5.30</p>
+          <div class="flex items-center">
+            <button class="bg-blue-500 text-white px-2 py-1 rounded-l">
+              -
+            </button>
+            <span class="px-2">1</span>
+            <button class="bg-blue-500 text-white px-2 py-1 rounded-r">
+              +
+            </button>
+          </div>
+        </div>
+        <!-- Product 5 -->
+        <div
+          class="bg-slate-700 text-white p-2 rounded-md flex flex-col items-center"
+        >
+          <img
+            src="images/cold brew.png"
+            alt="Cold Brew Coffee"
+            class="w-full h-30 object-cover rounded-md mb-2"
+          />
+          <h2 class="text-lg font-semibold mb-1">Cold Brew</h2>
+          <p class="mb-1">$3.30</p>
+          <div class="flex items-center">
+            <button class="bg-blue-500 text-white px-2 py-1 rounded-l">
+              -
+            </button>
+            <span class="px-2">1</span>
+            <button class="bg-blue-500 text-white px-2 py-1 rounded-r">
+              +
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Cart -->
   </body>
 </html>
