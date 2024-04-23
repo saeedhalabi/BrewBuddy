@@ -1,89 +1,89 @@
 // count functionality = increment and decrement functions for the buttons.
 
-let count1 = 0;
-let count2 = 0;
-let count3 = 0;
-let count4 = 0;
-let count5 = 0;
+// Initializing count variables for each product
+let count1 = 0; // Count for product 1
+let count2 = 0; // Count for product 2
+let count3 = 0; // Count for product 3
+let count4 = 0; // Count for product 4
+let count5 = 0; // Count for product 5
 
-let productCount1 = document.getElementById("product-count-1");
-let productCount2 = document.getElementById("product-count-2");
-let productCount3 = document.getElementById("product-count-3");
-let productCount4 = document.getElementById("product-count-4");
-let productCount5 = document.getElementById("product-count-5");
+// Getting references to HTML elements representing product counts
+let productCount1 = document.getElementById("product-count-1"); // Element for product 1 count
+let productCount2 = document.getElementById("product-count-2"); // Element for product 2 count
+let productCount3 = document.getElementById("product-count-3"); // Element for product 3 count
+let productCount4 = document.getElementById("product-count-4"); // Element for product 4 count
+let productCount5 = document.getElementById("product-count-5"); // Element for product 5 count
 
 let totalPrice = 0; // Add totalPrice variable
+
+// Update cart count function
+function updateCartCount() {
+  // set the total count
+  let totalCount = count1 + count2 + count3 + count4 + count5;
+  // update the total count
+  document.getElementById("cart-count").innerText = totalCount;
+}
 
 // increment functions
 function increment1() {
   count1++;
   productCount1.innerText = count1;
   addToCart("Coffee Latte", 4.99, count1); // Add to cart dynamically
+  updateCartCount();
 }
 
 function increment2() {
   count2++;
   productCount2.innerText = count2;
   addToCart("Capuccino", 3.49, count2); // Add to cart dynamically
+  updateCartCount();
 }
 
 function increment3() {
   count3++;
   productCount3.innerText = count3;
   addToCart("Americano", 2.2, count3); // Add to cart dynamically
+  updateCartCount();
 }
 
 function increment4() {
   count4++;
   productCount4.innerText = count4;
   addToCart("Iced Caramel Latte", 5.3, count4); // Add to cart dynamically
+  updateCartCount();
 }
 
 function increment5() {
   count5++;
   productCount5.innerText = count5;
   addToCart("Cold Brew", 3.3, count5); // Add to cart dynamically
+  updateCartCount();
 }
 
 // decrement functions
 function decrement1() {
-  if (count1 > 0) {
-    count1--;
-    productCount1.innerText = count1;
-    removeFromCart("Coffee Latte");
-  }
+  count1--;
+  productCount1.innerText = count1;
 }
 
 function decrement2() {
-  if (count2 > 0) {
-    count2--;
-    productCount2.innerText = count2;
-    removeFromCart("Capuccino");
-  }
+  count2--;
+  productCount2.innerText = count2;
 }
 
 function decrement3() {
-  if (count3 > 0) {
-    count3--;
-    productCount3.innerText = count3;
-    removeFromCart("Americano");
-  }
+  count3--;
+  productCount3.innerText = count3;
 }
 
 function decrement4() {
-  if (count4 > 0) {
-    count4--;
-    productCount4.innerText = count4;
-    removeFromCart("Iced Caramel Latte");
-  }
+  count4--;
+  productCount4.innerText = count4;
 }
 
 function decrement5() {
-  if (count5 > 0) {
-    count5--;
-    productCount5.innerText = count5;
-    removeFromCart("Cold Brew");
-  }
+  count5--;
+  productCount5.innerText = count5;
 }
 
 // Function to add a product to the cart
