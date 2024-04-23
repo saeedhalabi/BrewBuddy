@@ -46,21 +46,21 @@ function increment7() {
 function increment8() {
   count8++;
   productCount8.innerText = count8;
-  addToCart("Vanilla Latte", 5.29, count8); // Add to cart dynamically
+  addToCart("Flat White", 4.45, count8); // Add to cart dynamically
   updateCartCount();
 }
 
 function increment9() {
   count9++;
   productCount9.innerText = count9;
-  addToCart("Iced Caramel Latte", 5.3, count9); // Add to cart dynamically
+  addToCart("Espressso", 1.25, count9); // Add to cart dynamically
   updateCartCount();
 }
 
 function increment10() {
   count10++;
   productCount10.innerText = count10;
-  addToCart("Cold Brew", 3.3, count10); // Add to cart dynamically
+  addToCart("Frappuccino®", 6.39, count10); // Add to cart dynamically
   updateCartCount();
 }
 
