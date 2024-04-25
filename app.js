@@ -138,19 +138,21 @@ function addToCart(productName, price, count) {
 }
 
 function validateSelection() {
-  if (
-    count1 === 0 &&
-    count2 === 0 &&
-    count3 === 0 &&
-    count4 === 0 &&
-    count5 === 0
-  ) {
+  // Count the total number of selected items
+  let totalSelectedItems = count1 + count2 + count3 + count4 + count5;
+
+  // Check if at least one item is selected
+  if (totalSelectedItems === 0) {
+    // Display error message if no item is selected
     document.getElementById("error-message").innerText =
       "Please select a product before proceeding.";
     document.getElementById("error-message").style.color = "red";
-    return false; // to indicate that the user didn't select a product.
+    return false;
   }
-  return true; // user selected
+
+  // Proceed to the validation page
+  window.location.href = "validation.html";
+  return true;
 }
 
 // Define the removeCartItem function which takes a productName parameter
