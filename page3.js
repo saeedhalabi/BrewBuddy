@@ -1,25 +1,23 @@
 // count functionality = increment and decrement functions for the buttons.
 
 // Initializing count variables for each product
-let count6 = 0; // Count for product 1
-let count7 = 0; // Count for product 2
-let count8 = 0; // Count for product 3
-let count9 = 0; // Count for product 4
-let count10 = 0; // Count for product 5
+let count11 = 0; // Count for product 1
+let count12 = 0; // Count for product 2
+let count13 = 0; // Count for product 3
+let count14 = 0; // Count for product 4
 
 // Getting references to HTML elements representing product counts
-let productCount6 = document.getElementById("product-count-6"); // Element for product 1 count
-let productCount7 = document.getElementById("product-count-7"); // Element for product 2 count
-let productCount8 = document.getElementById("product-count-8"); // Element for product 3 count
-let productCount9 = document.getElementById("product-count-9"); // Element for product 4 count
-let productCount10 = document.getElementById("product-count-10"); // Element for product 5 count
+let productCount11 = document.getElementById("product-count-11"); // Element for product 1 count
+let productCount12 = document.getElementById("product-count-12"); // Element for product 2 count
+let productCount13 = document.getElementById("product-count-13"); // Element for product 3 count
+let productCount14 = document.getElementById("product-count-14"); // Element for product 4 count
 
 let totalPrice = 0; // Add totalPrice variable
 
 // Update cart count function
 function updateCartCount() {
   // set the total count
-  let totalCount = count6 + count7 + count8 + count9 + count10;
+  let totalCount = count11 + count12 + count13 + count14;
   // update the total count
   document.getElementById("cart-count").innerText = totalCount;
 }
@@ -29,87 +27,70 @@ function updateCartCount() {
 // adds the product to the cart with its price and quantity, and updates the overall cart count.
 // Decrement functions decrease the count for each product.
 
-function increment6() {
-  count6++;
-  productCount6.innerText = count6;
-  addToCart("Arabian Mocha", 2.99, count6); // Add to cart dynamically
+function increment11() {
+  count11++;
+  productCount11.innerText = count11;
+  addToCart("Nitro Cold Brew", 6.99, count11); // Add to cart dynamically
   updateCartCount();
 }
 
-function increment7() {
-  count7++;
-  productCount7.innerText = count7;
-  addToCart("Vanilla Latte", 5.29, count7); // Add to cart dynamically
+function increment12() {
+  count12++;
+  productCount12.innerText = count12;
+  addToCart("Blonde Roast", 4.56, count12); // Add to cart dynamically
   updateCartCount();
 }
 
-function increment8() {
-  count8++;
-  productCount8.innerText = count8;
-  addToCart("Flat White", 4.45, count8); // Add to cart dynamically
+function increment13() {
+  count13++;
+  productCount13.innerText = count13;
+  addToCart("Turkish Coffee", 2.45, count13); // Add to cart dynamically
   updateCartCount();
 }
 
-function increment9() {
-  count9++;
-  productCount9.innerText = count9;
-  addToCart("Espresso", 1.25, count9); // Add to cart dynamically
-  updateCartCount();
-}
-
-function increment10() {
-  count10++;
-  productCount10.innerText = count10;
-  addToCart("Frappuccino®", 6.39, count10); // Add to cart dynamically
+function increment14() {
+  count14++;
+  productCount14.innerText = count14;
+  addToCart("Affogato", 4.0, count14); // Add to cart dynamically
   updateCartCount();
 }
 
 // decrement functions
-function decrement6() {
-  if (count6 > 0) {
-    count6--;
-    productCount6.innerText = count6;
-    removeCartItem("Arabian Mocha");
+function decrement11() {
+  if (count11 > 0) {
+    count11--;
+    productCount11.innerText = count11;
+    removeCartItem("Nitro Cold Brew"); // Remove one item from the cart
+    updateTotalPrice(); // Update the total price
+    updateCartCount();
+  }
+}
+
+function decrement12() {
+  if (count12 > 0) {
+    count12--;
+    productCount12.innerText = count12;
+    removeCartItem("Blonde Roast");
     updateTotalPrice();
     updateCartCount();
   }
 }
 
-function decrement7() {
-  if (count7 > 0) {
-    count7--;
-    productCount7.innerText = count7;
-    removeCartItem("Vanilla Latte");
+function decrement13() {
+  if (count13 > 0) {
+    count13--;
+    productCount13.innerText = count13;
+    removeCartItem("Turkish Coffee");
     updateTotalPrice();
     updateCartCount();
   }
 }
 
-function decrement8() {
-  if (count8 > 0) {
-    count8--;
-    productCount8.innerText = count8;
-    removeCartItem("Flat White");
-    updateTotalPrice();
-    updateCartCount();
-  }
-}
-
-function decrement9() {
-  if (count9 > 0) {
-    count9--;
-    productCount9.innerText = count9;
-    removeCartItem("Espresso");
-    updateTotalPrice();
-    updateCartCount();
-  }
-}
-
-function decrement10() {
-  if (count10 > 0) {
-    count10--;
-    productCount10.innerText = count10;
-    removeCartItem("Frappuccino®");
+function decrement14() {
+  if (count14 > 0) {
+    count14--;
+    productCount14.innerText = count14;
+    removeCartItem("Affogato");
     updateTotalPrice();
     updateCartCount();
   }
@@ -144,13 +125,7 @@ function addToCart(productName, price, count) {
 }
 
 function validateSelection2() {
-  if (
-    count6 === 0 &&
-    count7 === 0 &&
-    count8 === 0 &&
-    count9 === 0 &&
-    count10 === 0
-  ) {
+  if (count11 === 0 && count12 === 0 && count13 === 0 && count14 === 0) {
     document.getElementById("error-message").innerText =
       "Please select a product before proceeding.";
     document.getElementById("error-message").style.color = "red";

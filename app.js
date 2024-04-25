@@ -62,28 +62,51 @@ function increment5() {
 
 // decrement functions
 function decrement1() {
-  count1--;
-  productCount1.innerText = count1;
+  if (count1 > 0) {
+    count1--;
+    productCount1.innerText = count1;
+    removeCartItem("Coffee Latte");
+    updateCartCount();
+    updateTotalPrice();
+  }
 }
 
 function decrement2() {
-  count2--;
-  productCount2.innerText = count2;
+  if (count2 > 0) {
+    count2--;
+    productCount2.innerText = count2;
+    removeCartItem("Capuccino");
+    updateCartCount();
+    updateTotalPrice();
+  }
 }
 
 function decrement3() {
-  count3--;
-  productCount3.innerText = count3;
+  if (count3 > 0) {
+    count3--;
+    productCount3.innerText = count3;
+    removeCartItem("Americano");
+    updateCartCount();
+    updateTotalPrice();
+  }
 }
 
 function decrement4() {
-  count4--;
-  productCount4.innerText = count4;
+  if (count4 > 0) {
+    productCount4.innerText = count4;
+    removeCartItem("Iced Caramel Latte");
+    updateCartCount();
+    updateTotalPrice();
+  }
 }
 
 function decrement5() {
-  count5--;
-  productCount5.innerText = count5;
+  if (count5 > 0) {
+    productCount5.innerText = count5;
+    removeCartItem("Cold Brew");
+    updateCartCount();
+    updateTotalPrice();
+  }
 }
 
 // Function to add a product to the cart
@@ -128,4 +151,60 @@ function validateSelection() {
     return false; // to indicate that the user didn't select a product.
   }
   return true; // user selected
+}
+
+// Define the removeCartItem function which takes a productName parameter
+function removeCartItem(productName) {
+  // Get all cart items from the DOM
+  let cartItems = document.querySelectorAll(".cart-item");
+
+  // Iterate over each cart item
+  cartItems.forEach(item => {
+    // Check if the product name of the current cart item matches the specified productName
+    if (item.querySelector(".item-name").innerText === productName) {
+      // Get the quantity element and retrieve the current count
+      // parseInt to retreive the text content directly to a number
+      let quantityElement = item.querySelector(".quantity-value");
+      let count = parseInt(quantityElement.innerText);
+
+      if (count > 1) {
+        // If there is more than one item, decrement the count
+        quantityElement.innerText = count - 1;
+
+        // get the price element specific to the current item
+        let priceElement = item.querySelector(".price");
+
+        // convert from string to a floating point number using the 'parseFloat' function
+        let price = parseFloat(priceElement.innerText.slice(1)); // this will remove the '$' sign, resulting only the price
+
+        // calculate the new price
+        let newPrice = (price / count) * (count - 1);
+
+        // update the price specific to the current item
+        priceElement.innerText = "$" + newPrice.toFixed(2);
+      } else {
+        // If the count is 1, remove the cart item from the DOM
+        item.remove();
+      }
+    }
+  });
+  updateTotalPrice();
+}
+
+function updateTotalPrice() {
+  // initialize a variable called total and set it to 0
+  let total = 0;
+  // get the HTML of the cart items
+  let cartItems = document.querySelectorAll(".cart-item");
+  // loop through each item in the HTML
+  cartItems.forEach(item => {
+    // get the HTML class of the price element
+    let priceElement = item.querySelector(".price");
+
+    let price = parseFloat(priceElement.innerText.slice(1)); // Remove "$" sign and parse float
+    // Accumulate the price of the current item to the total price
+    total += price;
+  });
+  // Update the displayed total price with the calculated total, formatted with two decimal places and prefixed with a dollar sign
+  document.getElementById("total-price").innerText = "$" + total.toFixed(2);
 }
