@@ -114,6 +114,7 @@ function clearErrorMessages() {
   const errorMessages = document.querySelectorAll(".error-message");
   // loop through each error message and clear the field
   errorMessages.forEach(errorMessage => {
+    // we loop through the variable that stores the HTML
     errorMessage.innerText = "";
   });
 }
