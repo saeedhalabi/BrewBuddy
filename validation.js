@@ -112,6 +112,7 @@ function displayErrorMessage(inputElement, errorMessage) {
 // Function to clear all error messages
 function clearErrorMessages() {
   const errorMessages = document.querySelectorAll(".error-message");
+  // loop through each error message and clear the field
   errorMessages.forEach(errorMessage => {
     errorMessage.innerText = "";
   });
