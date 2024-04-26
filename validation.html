@@ -19,6 +19,7 @@
       <div class="flex flex-wrap justify-center">
         <!-- Credit Card -->
         <div
+          onclick="selectCreditCard()"
           class="payment-option w-full sm:w-auto sm:max-w-xs m-2 p-3 sm:p-2 flex items-center justify-center flex-col bg-gray-100 hover:border-indigo-500 border-4 border-indigo-200 border-x-indigo-500 transition-all duration-300 cursor-pointer"
         >
           <img
@@ -27,9 +28,11 @@
             class="w-1/4"
           />
           <h5 class="text-green-700 text-center text-lg">Credit Card</h5>
+          <p id="checkText"></p>
         </div>
         <!-- American Express -->
         <div
+          onclick="selectAmericanExpressCard()"
           class="payment-option w-full sm:w-auto sm:max-w-xs m-2 p-3 sm:p-2 flex items-center justify-center flex-col bg-gray-100 hover:border-indigo-500 border-4 border-indigo-200 border-x-indigo-500 transition-all duration-300 cursor-pointer"
         >
           <img
@@ -38,9 +41,11 @@
             class="w-2/4"
           />
           <h5 class="text-green-700 text-center text-lg">American Express</h5>
+          <p id="checkTextAmericanExp"></p>
         </div>
         <!-- Debit Card -->
         <div
+          onclick="selectDebitCard()"
           class="payment-option w-full sm:w-auto sm:max-w-xs m-2 p-3 sm:p-2 flex items-center justify-center flex-col bg-gray-100 hover:border-indigo-500 border-4 border-indigo-200 border-x-indigo-500 transition-all duration-300 cursor-pointer"
         >
           <img
@@ -49,9 +54,143 @@
             class="w-2/4"
           />
           <h5 class="text-green-700 text-center text-lg">Debit Card</h5>
+          <p id="debitCard"></p>
         </div>
       </div>
     </div>
     <!-- Cards Validation -->
+    <h1 class="text-center text-teal-600 text-3xl">Credit Card Info</h1>
+    <!-- Validation Section -->
+    <div
+      class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2"
+    >
+      <div class="-mx-3 md:flex mb-6">
+        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+            for="grid-amount"
+          >
+            Amount
+          </label>
+          <input
+            class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
+            id="grid-amount"
+            type="number"
+            placeholder="0.00"
+            style="
+              -moz-appearance: textfield; /* Firefox */
+              -webkit-appearance: none; /* WebKit/Blink */
+              appearance: none; /* Standard */
+            "
+            required
+          />
+          <p id="amount-error" class="error-message"></p>
+        </div>
+
+        <div class="md:w-1/2 px-3">
+          <label
+            class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+            for="grid-name"
+          >
+            Name on Card
+          </label>
+          <input
+            class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
+            id="grid-name"
+            type="text"
+            placeholder="Enter username"
+          />
+          <p id="name-error" class="error-message"></p>
+        </div>
+      </div>
+      <div class="-mx-3 md:flex mb-6">
+        <div class="md:w-full px-3">
+          <label
+            class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+            for="grid-card-number"
+          >
+            Card Number
+          </label>
+          <input
+            class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3"
+            id="grid-card-number"
+            type="number"
+            placeholder="0000 0000 0000 0000"
+            style="
+              -moz-appearance: textfield; /* Firefox */
+              -webkit-appearance: none; /* WebKit/Blink */
+              appearance: none; /* Standard */
+            "
+          />
+          <p id="card-number-error" class="error-message"></p>
+        </div>
+      </div>
+      <div class="-mx-3 md:flex mb-2">
+        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+            for="expiration-date"
+          >
+            Expiration Date
+          </label>
+          <div class="flex">
+            <div class="mr-2">
+              <input
+                class="appearance-none bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded"
+                id="expiration-month"
+                type="number"
+                placeholder="MM"
+                maxlength="2"
+              />
+              <p id="month-error" class="error-message"></p>
+            </div>
+            <div>
+              <input
+                class="appearance-none bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded"
+                id="expiration-year"
+                type="number"
+                placeholder="YYYY"
+                maxlength="4"
+              />
+              <p id="year-error" class="error-message"></p>
+            </div>
+          </div>
+        </div>
+        <div class="md:w-1/2 px-3">
+          <label
+            class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+            for="cvv-number"
+          >
+            CVV Number
+          </label>
+          <input
+            class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
+            id="cvv-number"
+            type="number"
+            placeholder="CVV"
+            min="0"
+            max="9999"
+          />
+          <p id="cvv-error" class="error-message"></p>
+        </div>
+      </div>
+      <div class="relative mx-auto mt-5">
+        <div class="absolute -inset-5">
+          <div
+            class="w-full h-full max-w-sm mx-auto lg:mx-0 opacity-30 blur-lg bg-gradient-to-r from-yellow-400 via-pink-500 to-green-600"
+          ></div>
+        </div>
+        <a
+          href="#"
+          title=""
+          class="relative z-10 inline-flex items-center justify-center w-full px-8 py-3 text-lg font-bold text-white transition-all duration-200 bg-gray-900 border-2 border-transparent sm:w-auto rounded-xl font-pj hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+          role="button"
+          id="submitBtn"
+        >
+          Submit
+        </a>
+      </div>
+    </div>
+    <script src="validation.js"></script>
   </body>
 </html>

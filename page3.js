@@ -126,7 +126,7 @@ function addToCart(productName, price, count) {
 
 function validateSelection() {
   // Count the total number of selected items
-  let totalSelectedItems = count10 + count11 + count12 + count13 + count14;
+  let totalSelectedItems = count11 + count12 + count13 + count14;
 
   // Check if at least one item is selected
   if (totalSelectedItems === 0) {
