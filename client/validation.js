@@ -44,7 +44,6 @@ function selectDebitCard() {
   checkTextAmericanExp.innerText = "";
 }
 
-// Function to validate and submit the form
 function submitForm(event) {
   event.preventDefault(); // Prevent default form submission behavior
 
@@ -59,7 +58,22 @@ function submitForm(event) {
   validateInput(expYearInput, "Specify the Expiration Year.");
   validateInput(cvvNumber, "Enter the CVV Number.");
 
-  // if any input fields is empty, prevent from submission
+  // Additional validation for amount
+  validateAmount();
+
+  // validation for cvv
+  validateCVV();
+
+  // validation for card number
+  validateCardNumber();
+
+  // validation for the month
+  validateExpMonth();
+
+  // validation for the year
+  validateExpYear();
+
+  // if any input fields are empty, prevent submission
   if (
     amountInput.value.trim() === "" ||
     nameCardInput.value.trim() === "" ||
@@ -70,18 +84,26 @@ function submitForm(event) {
   ) {
     return;
   }
-  validateCVV();
 }
 
-// Function to validate CVV based on the selected card type
+function validateAmount() {
+  const amountValue = parseFloat(amountInput.value.trim());
+
+  if (amountValue === "") {
+    displayErrorMessage(amountInput, "Fill out the amount.");
+  } else if (amountValue.length > 6) {
+    displayErrorMessage(amountInput, "Amount cannot exceed 6 digits!");
+  } else {
+    clearErrorMessages();
+  }
+}
+
 function validateCVV() {
   const cvvValue = cvvNumber.value.trim();
   if (cvvValue === "") {
     displayErrorMessage(cvvNumber, "Enter the CVV number.");
   } else {
-    if (selectedCardType === "credit" && cvvValue.length === 3) {
-      clearErrorMessages();
-    } else if (selectedCardType === "credit" && cvvValue.length !== 3) {
+    if (selectedCardType === "credit" && cvvValue.length !== 3) {
       displayErrorMessage(cvvNumber, "Invalid CVV Number for Credit Cards.");
     } else if (
       selectedCardType === "americanExpress" &&
@@ -90,7 +112,56 @@ function validateCVV() {
       displayErrorMessage(cvvNumber, "Invalid CVV for American Express.");
     } else if (selectedCardType === "debit" && cvvValue.length !== 3) {
       displayErrorMessage(cvvNumber, "Invalid CVV for debit card.");
+    } else {
+      clearErrorMessages(); // Clear errors if the CVV length is correct
     }
+  }
+}
+
+function validateCardNumber() {
+  const cardNumberValue = cardNumberInput.value.trim();
+
+  if (cardNumberValue === "") {
+    displayErrorMessage(cardNumberInput, "Input the Card Number");
+  } else if (cardNumberValue.length > 16) {
+    displayErrorMessage(
+      cardNumberInput,
+      "Card Number exceeded character limit!"
+    );
+  } else {
+    clearErrorMessages();
+  }
+}
+
+function validateExpMonth() {
+  const expMonthValue = expMonthInput.value.trim();
+
+  if (expMonthValue === "") {
+    displayErrorMessage(expMonthInput, "Specify The Expiration Month");
+  } else if (
+    expMonthValue.length !== 2 ||
+    isNaN(expMonthValue) ||
+    parseInt(expMonthValue) < 1 ||
+    parseInt(expMonthValue) > 12
+  ) {
+    displayErrorMessage(
+      expMonthInput,
+      "Wrong, enter the correct month (01-12)"
+    );
+  } else {
+    clearErrorMessages(expMonthInput); // Clear only the error message for expiration month
+  }
+}
+
+function validateExpYear() {
+  const expYearValue = expYearInput.value.trim();
+
+  if (expYearValue === "") {
+    displayErrorMessage(expYearInput, "Specify The Expiration Year");
+  } else if (expYearValue.length != 4) {
+    displayErrorMessage(expYearInput, "Enter the correct year.");
+  } else {
+    clearErrorMessages(expYearInput);
   }
 }
 
@@ -109,13 +180,43 @@ function displayErrorMessage(inputElement, errorMessage) {
   inputElement.nextElementSibling.style.color = "red";
 }
 
-// Function to clear all error messages
 function clearErrorMessages() {
+  // Select all elements with the class "error-message"
   const errorMessages = document.querySelectorAll(".error-message");
-  // loop through each error message and clear the field
+
+  // Loop through each error message
   errorMessages.forEach(errorMessage => {
-    // we loop through the variable that stores the HTML
-    errorMessage.innerText = "";
+    // Get the input element associated with the error message
+    const inputElement = errorMessage.previousElementSibling;
+
+    // Check if the input field is not empty
+    if (inputElement.value.trim() !== "") {
+      // If input field is not empty, clear the error message
+      errorMessage.innerText = "";
+    } else if (inputElement === cardNumberInput) {
+      // If the input field is the card number, validate its length
+      const cardNumberValue = cardNumberInput.value.trim();
+      if (cardNumberValue.length !== 16) {
+        // If card number length is not 16, display an error message
+        errorMessage.innerText = "Invalid Card Number";
+        errorMessage.style.color = "red";
+      }
+    } else if (inputElement === cvvNumber) {
+      // If the input field is the CVV number, validate its length
+      const cvvValue = cvvNumber.value.trim();
+      let validCVVLength;
+      // Determine the valid CVV length based on the selected card type
+      if (selectedCardType === "americanExpress") {
+        validCVVLength = 4; // American Express CVV length is 4
+      } else {
+        validCVVLength = 3; // Other cards have CVV length of 3
+      }
+      if (cvvValue.length !== validCVVLength) {
+        // If CVV number length is not valid, display an error message
+        errorMessage.innerText = "Invalid CVV Number";
+        errorMessage.style.color = "red";
+      }
+    }
   });
 }
 
