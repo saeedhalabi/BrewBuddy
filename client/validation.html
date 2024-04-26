@@ -150,7 +150,7 @@
                 id="expiration-year"
                 type="number"
                 placeholder="YYYY"
-                maxlength="4"
+                maxlength="2"
               />
               <p id="year-error" class="error-message"></p>
             </div>
@@ -169,7 +169,7 @@
             type="number"
             placeholder="CVV"
             min="0"
-            max="9999"
+            max="4"
           />
           <p id="cvv-error" class="error-message"></p>
         </div>
@@ -191,6 +191,11 @@
         </a>
       </div>
     </div>
+    <div class="popup" id="checkPopup">
+      <img src="images/green-check.png" alt="check-img" />
+      <p>Transaction Complete!</p>
+    </div>
+
     <script src="validation.js"></script>
   </body>
 </html>

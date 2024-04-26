@@ -84,6 +84,8 @@ function submitForm(event) {
   ) {
     return;
   }
+  popup();
+  clearErrorMessages();
 }
 
 function validateAmount() {
@@ -128,6 +130,8 @@ function validateCardNumber() {
       cardNumberInput,
       "Card Number exceeded character limit!"
     );
+  } else if (cardNumberValue.length < 16) {
+    displayErrorMessage(cardNumberInput, "Wrong Card Number.");
   } else {
     clearErrorMessages();
   }
@@ -218,6 +222,15 @@ function clearErrorMessages() {
       }
     }
   });
+}
+// functionality for the popup
+let popUp = document.querySelector(".popup");
+function popup() {
+  popUp.style.display = "block";
+
+  setTimeout(() => {
+    popUp.style.display = "none";
+  }, 4000);
 }
 
 // Attach submitForm function to submit button click event
