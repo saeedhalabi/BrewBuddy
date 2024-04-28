@@ -169,7 +169,6 @@ function validateExpYear() {
   }
 }
 
-// Function to validate the amount
 
 // Function to validate input fields
 function validateInput(inputElement, errorMessage) {
