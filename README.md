@@ -28,7 +28,7 @@ The entire application was developed using Visual Studio Code, a versatile sourc
 
 ## Useful Extensions
 
-1. **Tailwind CSS IntelliSense**
+- **Tailwind CSS IntelliSense**
    - **Extension:** [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
    - **Description:** Tailwind CSS IntelliSense is an extension for Visual Studio Code that enhances your development workflow by providing intelligent suggestions and autocompletions for Tailwind CSS classes directly within your HTML and CSS files. With Tailwind CSS IntelliSense, you can speed up your styling process, reduce typos, and ensure consistent usage of Tailwind utility classes. This extension leverages the power of Tailwind CSS's utility-first approach to offer context-aware suggestions, making it easier for you to create responsive and visually appealing designs.
 ## Setup
