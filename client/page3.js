@@ -98,28 +98,64 @@ function decrement14() {
 
 // Function to add a product to the cart
 function addToCart(productName, price, count) {
-  // Find the cart container
+  // Find the cart container element
   let cartContainer = document.querySelector(".cart-items");
 
-  // Create a new cart item
-  let cartItem = document.createElement("div");
-  cartItem.classList.add("cart-item");
+  // Variable to hold the existing cart item if found
+  let existingCartItem = null;
 
-  // Set the HTML content of the cart item
-  cartItem.innerHTML = `
-    <h2 class="text-lg font-semibold item-name">${productName}</h2>
-    <div class="flex justify-between items-center mb-2">
-      <div class="quantity">-</div>
-      <div class="quantity-value">${count}</div>
-      <div class="price">$${(price * count).toFixed(2)}</div>
-    </div>
-  `;
+  // Get all cart items
+  let cartItems = cartContainer.children;
 
-  // Append the cart item to the cart container
-  cartContainer.appendChild(cartItem);
+  // Loop through each cart item to check if it matches the product name
+  for (let i = 0; i < cartItems.length; i++) {
+    // Check if the current cart item's product name matches the given product name
+    if (cartItems[i].querySelector(".item-name").innerText === productName) {
+      // If it matches, store the existing cart item and break the loop
+      existingCartItem = cartItems[i];
+      break;
+    }
+  }
 
-  // Update total price
-  totalPrice += price * count;
+  // If the item already exists in the cart
+  if (existingCartItem) {
+    // Get the element that shows the quantity
+    let quantityElement = existingCartItem.querySelector(".quantity-value");
+
+    // Increment the quantity by 1
+    let newCount = parseInt(quantityElement.innerText) + 1;
+
+    // Update the displayed quantity
+    quantityElement.innerText = newCount;
+
+    // Get the element that shows the price
+    let priceElement = existingCartItem.querySelector(".price");
+
+    // Update the price based on the new quantity
+    priceElement.innerText = "$" + (price * newCount).toFixed(2);
+  } else {
+    // If the item does not exist in the cart, create a new cart item
+    let cartItem = document.createElement("div");
+    cartItem.classList.add("cart-item");
+
+    // Set the HTML content of the new cart item
+    cartItem.innerHTML = `
+      <h2 class="text-lg font-semibold item-name">${productName}</h2>
+      <div class="flex justify-between items-center mb-2">
+        <div class="quantity">-</div>
+        <div class="quantity-value">${count}</div>
+        <div class="price">$${(price * count).toFixed(2)}</div>
+      </div>
+    `;
+
+    // Append the new cart item to the cart container
+    cartContainer.appendChild(cartItem);
+  }
+
+  // Update the total price by adding the price of the newly added item
+  totalPrice += price;
+
+  // Display the updated total price
   document.getElementById("total-price").innerText =
     "$" + totalPrice.toFixed(2);
 }
