@@ -1,10 +1,5 @@
 # ☕ BrewBuddy: Your Ultimate Coffee Ordering Experience
 
-<div align="center">
-  <img src="./screenshots/cart-item-page.jpg" alt="BrewBuddy App" width="600"/>
-  <br/>
-  <em>Modern, intuitive coffee ordering made simple</em>
-</div>
 
 ## 🌟 Features
 
