@@ -1,16 +1,27 @@
 // count functionality = increment and decrement functions for the buttons.
 
-// Initializing count variables for each product
-let count11 = 0; // Count for product 1
-let count12 = 0; // Count for product 2
-let count13 = 0; // Count for product 3
-let count14 = 0; // Count for product 4
+// Initialize product counts from cart state
+const cartItems = CartManager.getCartItems();
+let count11 =
+  cartItems.find(item => item.name === "Nitro Cold Brew")?.quantity || 0;
+let count12 =
+  cartItems.find(item => item.name === "Blonde Roast")?.quantity || 0;
+let count13 =
+  cartItems.find(item => item.name === "Turkish Coffee")?.quantity || 0;
+let count14 =
+  cartItems.find(item => item.name === "Mocha Cookie Crumble")?.quantity || 0;
 
 // Getting references to HTML elements representing product counts
-let productCount11 = document.getElementById("product-count-11"); // Element for product 1 count
-let productCount12 = document.getElementById("product-count-12"); // Element for product 2 count
-let productCount13 = document.getElementById("product-count-13"); // Element for product 3 count
-let productCount14 = document.getElementById("product-count-14"); // Element for product 4 count
+let productCount11 = document.getElementById("product-count-11");
+let productCount12 = document.getElementById("product-count-12");
+let productCount13 = document.getElementById("product-count-13");
+let productCount14 = document.getElementById("product-count-14");
+
+// Initialize the UI with stored values
+if (productCount11) productCount11.innerText = count11;
+if (productCount12) productCount12.innerText = count12;
+if (productCount13) productCount13.innerText = count13;
+if (productCount14) productCount14.innerText = count14;
 
 let totalPrice = 0; // Add totalPrice variable
 
@@ -29,30 +40,26 @@ function updateCartCount() {
 
 function increment11() {
   count11++;
+  CartManager.addItem("Nitro Cold Brew", 6.99, count11);
   productCount11.innerText = count11;
-  addToCart("Nitro Cold Brew", 6.99, count11); // Add to cart dynamically
-  updateCartCount();
 }
 
 function increment12() {
   count12++;
+  CartManager.addItem("Blonde Roast", 4.56, count12);
   productCount12.innerText = count12;
-  addToCart("Blonde Roast", 4.56, count12); // Add to cart dynamically
-  updateCartCount();
 }
 
 function increment13() {
   count13++;
+  CartManager.addItem("Turkish Coffee", 2.45, count13);
   productCount13.innerText = count13;
-  addToCart("Turkish Coffee", 2.45, count13); // Add to cart dynamically
-  updateCartCount();
 }
 
 function increment14() {
   count14++;
+  CartManager.addItem("Affogato", 4.0, count14);
   productCount14.innerText = count14;
-  addToCart("Affogato", 4.0, count14); // Add to cart dynamically
-  updateCartCount();
 }
 
 // decrement functions
@@ -60,9 +67,7 @@ function decrement11() {
   if (count11 > 0) {
     count11--;
     productCount11.innerText = count11;
-    removeCartItem("Nitro Cold Brew"); // Remove one item from the cart
-    updateTotalPrice(); // Update the total price
-    updateCartCount();
+    CartManager.updateItemQuantity("Nitro Cold Brew", count11);
   }
 }
 
@@ -70,9 +75,7 @@ function decrement12() {
   if (count12 > 0) {
     count12--;
     productCount12.innerText = count12;
-    removeCartItem("Blonde Roast");
-    updateTotalPrice();
-    updateCartCount();
+    CartManager.updateItemQuantity("Blonde Roast", count12);
   }
 }
 
@@ -80,9 +83,7 @@ function decrement13() {
   if (count13 > 0) {
     count13--;
     productCount13.innerText = count13;
-    removeCartItem("Turkish Coffee");
-    updateTotalPrice();
-    updateCartCount();
+    CartManager.updateItemQuantity("Turkish Coffee", count13);
   }
 }
 
@@ -90,9 +91,7 @@ function decrement14() {
   if (count14 > 0) {
     count14--;
     productCount14.innerText = count14;
-    removeCartItem("Affogato");
-    updateTotalPrice();
-    updateCartCount();
+    CartManager.updateItemQuantity("Affogato", count14);
   }
 }
 

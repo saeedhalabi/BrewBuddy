@@ -1,11 +1,15 @@
 // count functionality = increment and decrement functions for the buttons.
 
-// Initializing count variables for each product
-let count6 = 0; // Count for product 1
-let count7 = 0; // Count for product 2
-let count8 = 0; // Count for product 3
-let count9 = 0; // Count for product 4
-let count10 = 0; // Count for product 5
+// Initialize product counts from cart state
+const cartItems = CartManager.getCartItems();
+let count6 =
+  cartItems.find(item => item.name === "Arabian Mocha")?.quantity || 0;
+let count7 =
+  cartItems.find(item => item.name === "Vanilla Latte")?.quantity || 0;
+let count8 = cartItems.find(item => item.name === "Flat White")?.quantity || 0;
+let count9 =
+  cartItems.find(item => item.name === "Irish Coffee")?.quantity || 0;
+let count10 = cartItems.find(item => item.name === "Espresso")?.quantity || 0;
 
 // Getting references to HTML elements representing product counts
 let productCount6 = document.getElementById("product-count-6"); // Element for product 1 count
@@ -31,23 +35,20 @@ function updateCartCount() {
 
 function increment6() {
   count6++;
+  CartManager.addItem("Arabian Mocha", 2.99, count6);
   productCount6.innerText = count6;
-  addToCart("Arabian Mocha", 2.99, count6); // Add to cart dynamically
-  updateCartCount();
 }
 
 function increment7() {
   count7++;
+  CartManager.addItem("Vanilla Latte", 5.29, count7);
   productCount7.innerText = count7;
-  addToCart("Vanilla Latte", 5.29, count7); // Add to cart dynamically
-  updateCartCount();
 }
 
 function increment8() {
   count8++;
+  CartManager.addItem("Flat White", 4.45, count8);
   productCount8.innerText = count8;
-  addToCart("Flat White", 4.45, count8); // Add to cart dynamically
-  updateCartCount();
 }
 
 function increment9() {
