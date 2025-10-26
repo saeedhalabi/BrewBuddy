@@ -79,7 +79,7 @@ BrewBuddy/
   <img src="./screenshots/payment-page.jpg" alt="Payment Page" width="400"/>
 </div>
 
-## � Key Features Explained
+## 🗝️ Key Features Explained
 
 ### Cart System
 - Persistent cart state across pages using localStorage
